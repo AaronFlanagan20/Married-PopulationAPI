@@ -4,15 +4,18 @@
 *The aim of this project is to compare the population of Ireland, between 2011 and 2014, to the amount of married couples in Ireland in the same year. The scope of this API can be used in many aspects*
 
 ```
-1. Auctioners looking for new home buyers
+1. Auctioners looking for new home buyers.
 2. Travel Agencies doing honeymoon deals.
 3. New born products.
 4. Insurance and tax calculations.
-5. etc
+5. Companies calculating break even costs.
+6. etc..
 ```
 
 ## Datasets used
-There are two datasets used for this api: **Population 2011 - 2014.csv** and **Marriages 2011 - 2014.csv**
+There are two datasets used for this api: **Population 2011 - 2014.csv** and **Marriages 2011 - 2014.csv**. Both where supplied from the Central Statistics Office (CSO).
+
+**Note** Minor format changes have been made to the datasets supplied by CSO.
 
 **Population 2011 - 2014.json** is based on Age, gender and year. This file is based on the census of Ireland in the years of 2011, 2012, 2013 and 2014. It also calculates the total for both genders. 
 
@@ -27,9 +30,9 @@ Two .csv files have been added to the repository so the data can be manipulated,
 
 ### There is two methods to use this API.
 **Method 1**: Download and access source code.
-* First you can download the zip file or fork this repository to your own github and clone it
-* Next open your terminal/command prompt and change directory to where the repository is stored on your local machine
-* You can now run the command *_node Server.js_* and run the server on our local machine
+* First you can download the zip file or fork this repository to your own github and clone it to your machine.
+* Next open your terminal/command prompt and change directory to where the repository is stored on your local machine.
+* You can now run the command *_node Server.js_* and run the server on our local machine.
 * Finally you can what the population amount in a given year at the following URL with your lcoal machine browser:
 
   *127.0.0.1:8000/population/[gender]/[year]*
@@ -40,27 +43,36 @@ Two .csv files have been added to the repository so the data can be manipulated,
   will return the number of males there was in Ireland in 2011.
 
 
-**Method 2**: Query API online
+**Method 2**: Post requests online
 
-You can query the api at *http://married-populationAPI/male/2012/*
+*The following URL's will post a request to the API to return data.*
+
+
+You can query the api at:
+* http://married-populationAPI/male/2012/
+* http://married-populationAPI/female/2012/
+* http://married-populationAPI/male/20/2011/
+* http://married-populationAPI/female/20/2013/
+
+
 
 ## Query URLS
 
 
 #### Population
 
-- 127.0.0.1:8000/population/[gender]/[year] Returns amount of [gender] in the country in given [year]
-- 127.0.0.1:8000/population/[year] Returns amount of people in the country in given [year]
-- 127.0.0.1:8000/population/[age]/[year] Returns amount of [age] in the country in given [year]
-- 127.0.0.1:8000/population/[age]/[gender]/[year] Returns amount of [age] and [gender] in the country in given [year]
+- 127.0.0.1:8000/population/[gender]/[year] - Returns amount of [gender] in the country in given [year]
+- 127.0.0.1:8000/population/[year] - Returns amount of people in the country in given [year]
+- 127.0.0.1:8000/population/[age]/[year] - Returns amount of [age] in the country in given [year]
+- 127.0.0.1:8000/population/[age]/[gender]/[year] - Returns amount of [age] and [gender] in the country in given [year]
 
 
 #### Marriages
 
-- 127.0.0.1:8000/marriages/[gender]/[year] Returns amount of [gender] married in given [year]
-- 127.0.0.1:8000/marriages/[year] Returns amount of people married in given [year]
-- 127.0.0.1:8000/marriages/[age]/[year] Returns amount of [age] married in given [year]
-- 127.0.0.1:8000/marriages/[age]/[gender]/[year] Returns amount of [age] and [gender] married in given [year]
+- 127.0.0.1:8000/marriages/[gender]/[year] - Returns amount of [gender] married in given [year]
+- 127.0.0.1:8000/marriages/[year] - Returns amount of people married in given [year]
+- 127.0.0.1:8000/marriages/[age]/[year] - Returns amount of [age] married in given [year]
+- 127.0.0.1:8000/marriages/[age]/[gender]/[year] - Returns amount of [age] and [gender] married in given [year]
 
 ## Returned format
 The API will return information in one of two formats:
@@ -91,5 +103,7 @@ The API will return information in one of two formats:
 
 ## References
 [Node,js](https://nodejs.org/en/).
+
+[CSO datasets](http://www.cso.ie/en/index.html).
 
 [Ian McLoughlin Lecture notes](https://github.com/ianmcloughlin).
