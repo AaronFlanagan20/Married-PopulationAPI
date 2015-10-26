@@ -14,8 +14,9 @@
 ## Datasets used
 There are two datasets used for this api: **Population 2011 - 2014.csv** and **Marriages 2011 - 2014.csv**
 
-**Population 2011 - 2014.json** is based on Age, gender and year. This also reads in the total for both genders.
-**Marriages 2011 - 2014.json** is based on Age, gender and year. However this doesn't take both genders into account.
+**Population 2011 - 2014.json** is based on Age, gender and year. This file is based on the census of Ireland in the years of 2011, 2012, 2013 and 2014. It also calculates the total for both genders. 
+
+**Marriages 2011 - 2014.json** is based on Age, gender and year. This file holds the statistics of how many marriages are active in the country in the same years. However this doesn't take both genders into account.
 
 Two .csv files have been added to the repository so the data can be manipulated, updated or deleted.
 
