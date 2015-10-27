@@ -19,8 +19,8 @@ app.get('/', function(req, res) {
 });
 
 //*****************POPULATION GET REQUESTS******************//
-app.get('/population/age/:id', function(req, res) {
-  res.json(popData[req.params.id]);
+app.get('/population/:Sex/:Age', function(req, res) {
+  res.json(popData[req.params.Sex]);
 });
 
 
