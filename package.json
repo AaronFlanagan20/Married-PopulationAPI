@@ -1,0 +1,28 @@
+{
+  "name": "married-population-api",
+  "version": "1.0.0",
+  "description": "returns the population of ireland between years 2011-2014 and between ages of 1-99+, also returns marriages registerd in years 2011-2014 between ages 20-49",
+  "main": "Server.js",
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "#127.0.0.1:8000/population/sex/age",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AaronFlanagan20/Married-PopulationAPI.git"
+  },
+  "keywords": [
+    "apps4gaps",
+    "married-populationAPI"
+  ],
+  "author": "Aaron Flanagan, Ciaran Brennan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AaronFlanagan20/Married-PopulationAPI/issues"
+  },
+  "homepage": "https://github.com/AaronFlanagan20/Married-PopulationAPI#readme"
+}

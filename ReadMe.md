@@ -61,18 +61,18 @@ You can query the api at:
 
 #### Population
 
-- 127.0.0.1:8000/population/[gender]/[year] - Returns amount of [gender] in the country in given [year]
-- 127.0.0.1:8000/population/[year] - Returns amount of people in the country in given [year]
-- 127.0.0.1:8000/population/[age]/[year] - Returns amount of [age] in the country in given [year]
-- 127.0.0.1:8000/population/[age]/[gender]/[year] - Returns amount of [age] and [gender] in the country in given [year]
+- 127.0.0.1:8000/population/sex/age/[sex]/[age] - Returns the specific gender and age in the country for 4 years
+- 127.0.0.1:8000/population/year/[year] - Returns all ages and sexs in the country in given year
+- 127.0.0.1:8000/population/age/year/[age]/[year] - Returns population for age and all sex's(male,female,both) for specific given year
+- 127.0.0.1:8000/population/all - Returns all 3 sex's with age and population for 4 years
 
 
 #### Marriages
 
-- 127.0.0.1:8000/marriages/[gender]/[year] - Returns amount of [gender] married in given [year]
-- 127.0.0.1:8000/marriages/[year] - Returns amount of people married in given [year]
-- 127.0.0.1:8000/marriages/[age]/[year] - Returns amount of [age] married in given [year]
-- 127.0.0.1:8000/marriages/[age]/[gender]/[year] - Returns amount of [age] and [gender] married in given [year]
+- 127.0.0.1:8000/marriage/sex/age/[sex]/[age] - Returns the specific gender and age in the country for 4 years
+- 127.0.0.1:8000/marriage/year/[year] - Returns all ages and sexs in the country in given year
+- 127.0.0.1:8000/marriage/age/year/[age]/[year] - Returns marriages for age and all sex's(male,female,both) for specific given year
+- 127.0.0.1:8000/marriage/all - Returns all 3 sex's with age and population for 4 years
 
 ## Returned format
 The API will return information in one of two formats:
