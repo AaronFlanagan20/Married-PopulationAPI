@@ -79,7 +79,7 @@ var marData = JSON.parse(fs.readFileSync('Marriages 2011 - 2014.json','utf8'));
 // returns population for single sex and age for all years
 //returns one json element
 app.get('/population/sex/age/:sex/:age', function(req, res) {
-	db.each("SELECT * FROM popData WHERE sex = '" + req.params.sex + "' AND age = '" + req.params.age +"' ", function(err, row) {
+	db.all("SELECT * FROM popData WHERE sex = '" + req.params.sex + "' AND age = '" + req.params.age +"' ", function(err, row) {
 		res.json(addToArray(row));
 	});
 });
@@ -87,7 +87,7 @@ app.get('/population/sex/age/:sex/:age', function(req, res) {
 // return population for all sex and age for specific year
 //returns all json elements with one year
 app.get('/population/year/:year', function(req, res) {
-	db.each("SELECT age,sex, "+getYear(req.params.year)+" FROM popData WHERE'" + req.params.year +"' GROUP BY age ORDER BY sex DESC", function(err, row) {
+	db.all("SELECT age,sex, "+getYear(req.params.year)+" FROM popData WHERE'" + req.params.year +"' ", function(err, row) {
 		res.json(addToArray(row));
 	});
 });
@@ -95,15 +95,15 @@ app.get('/population/year/:year', function(req, res) {
 //returns population for age and all sex's(male,female,both) for specific given year
 // returns 3 json elements
 app.get('/population/age/year/:age/:year', function(req, res) {
-	db.each("SELECT age, sex, "+getYear(req.params.year)+" FROM popData WHERE age = '" + req.params.age + "' AND'"+ req.params.year +"' GROUP BY age ORDER BY sex DESC", function(err, row) {
-			res.json(addToArray(row));
+	db.all("SELECT age, sex, "+getYear(req.params.year)+" FROM popData WHERE age = '" + req.params.age + "' AND'"+ req.params.year +"' ", function(err, row) {
+		res.json(addToArray(row));
 	});
 });
 
 // return whole population array 
 //returns all json elements
 app.get('/population/all', function(req, res) {
-	db.each("SELECT * FROM popData", function(err, row) {
+	db.all("SELECT * FROM popData", function(err, row) {
 		res.json(addToArray(row));
 	});
 });
@@ -114,7 +114,7 @@ app.get('/population/all', function(req, res) {
 // returns marriage for single sex and age for all years
 //returns one json element
 app.get('/marriage/sex/age/:sex/:age', function(req, res) {
-	db.each("SELECT * FROM marData WHERE sex = '" + req.params.sex + "' AND age = '" + req.params.age +"' ", function(err, row) {
+	db.all("SELECT * FROM marData WHERE sex = '" + req.params.sex + "' AND age = '" + req.params.age +"' ", function(err, row) {
 		res.json(addToArray(row));
 	});
 });
@@ -122,15 +122,15 @@ app.get('/marriage/sex/age/:sex/:age', function(req, res) {
 // return marriage for all sex and age for specific year
 //returns all json elements with one year
 app.get('/marriage/year/:year', function(req, res) {
-	db.each("SELECT age,sex, "+getYear(req.params.year)+" FROM marData WHERE'" + req.params.year +"' GROUP BY age ORDER BY sex DESC", function(err, row) {
+	db.all("SELECT age,sex, "+getYear(req.params.year)+" FROM marData WHERE'" + req.params.year +"' ", function(err, row) {
 		res.json(addToArray(row));
 	});
 });
 
 //returns marriage for age and all sex's(male,female,both) for specific given year
-// returns 3 json elements
+// returns 2 json elements
 app.get('/marriage/age/year/:age/:year', function(req, res) {
-	db.each("SELECT age, sex, "+getYear(req.params.year)+" FROM marData WHERE age = '" + req.params.age + "' AND'"+ req.params.year +"' GROUP BY age ORDER BY sex DESC", function(err, row) {
+	db.all("SELECT age, sex, "+getYear(req.params.year)+" FROM marData WHERE age = '" + req.params.age + "' AND'"+ req.params.year +"'", function(err, row) {
 			res.json(addToArray(row));
 	});
 });
@@ -138,7 +138,7 @@ app.get('/marriage/age/year/:age/:year', function(req, res) {
 // return whole marriage array 
 //returns all json elements
 app.get('/marriage/all', function(req, res) {
-	db.each("SELECT * FROM marData", function(err, row) {
+	db.all("SELECT * FROM marData", function(err, row) {
 		res.json(addToArray(row));
 	});
 });
