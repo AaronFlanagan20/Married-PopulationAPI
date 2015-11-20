@@ -142,8 +142,20 @@ app.get('/marriage/all', function(req, res) {
 		res.json(addToArray(row));
 	});
 });
-//******************* FINSIH MARRIAGE GET REQUESTS ************************//
+//******************* FINISH MARRIAGE GET REQUESTS ************************//
+//******************* COMPARE BOTH SETS REQUESTS ***********************//
 
+//returns both tables to compare population to marriages in country
+//returns two json element   RETURNS BOTH BUT ONLY PRINTS LAST ONE
+app.get('/population/marriage/sex/age/:sex/:age', function(req, res) {
+	db.all("SELECT * FROM popData INNER JOIN marData ON popData.sex = '" + req.params.sex + "' AND popData.age = '" + req.params.age +"' AND marData.sex = '" + req.params.sex + "' AND marData.age = '" + req.params.age +"'", function(err, row) {
+		res.json(addToArray(row));
+	});
+});
+
+
+
+//******************* FINSIH COMPARE BOTH SETS REQUESTS ***********************//
 //add all return values to array
 function addToArray(row){
 	var results = [];
