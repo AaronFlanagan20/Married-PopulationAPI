@@ -128,7 +128,7 @@ app.get('/marriage/year/:year', function(req, res) {
 });
 
 //returns marriage for age and all sex's(male,female,both) for specific given year
-// returns 2 json elements
+// returns 6 json elements
 app.get('/marriage/age/year/:age/:year', function(req, res) {
 	db.all("SELECT age, sex, "+getYear(req.params.year)+" FROM marData WHERE age = '" + req.params.age + "' AND'"+ req.params.year +"'", function(err, row) {
 			res.json(addToArray(row));
@@ -145,15 +145,29 @@ app.get('/marriage/all', function(req, res) {
 //******************* FINISH MARRIAGE GET REQUESTS ************************//
 //******************* COMPARE BOTH SETS REQUESTS ***********************//
 
-//returns both tables to compare population to marriages in country
-//returns two json element   RETURNS BOTH BUT ONLY PRINTS LAST ONE
+//returns both tables to compare population to marriages in country for certain sex and age
+//returns two json   RETURNS BOTH BUT ONLY PRINTS LAST ONE
 app.get('/population/marriage/sex/age/:sex/:age', function(req, res) {
-	db.all("SELECT * FROM popData INNER JOIN marData ON popData.sex = '" + req.params.sex + "' AND popData.age = '" + req.params.age +"' AND marData.sex = '" + req.params.sex + "' AND marData.age = '" + req.params.age +"'", function(err, row) {
+	db.all("SELECT * FROM marData INNER JOIN popData ON popData.sex = '" + req.params.sex + "' AND popData.age = '" + req.params.age +"' AND marData.sex = '" + req.params.sex + "' AND marData.age = '" + req.params.age +"'", function(err, row) {
+		res.json(addToArray(row));//prints last element returned switch popData with mardata in sql to see
+	});
+});
+
+//returns both tables to compare population to marriages in country for all sex and age for specific year
+//returns all json elements with one year
+app.get('/population/marriage/year/:year', function(req, res) {
+	db.all("SELECT popdata.age,popdata.sex, popdata."+getYear(req.params.year)+", mardata.age, mardata.sex, mardata." +getYear(req.params.year)+" FROM popData INNER JOIN mardata WHERE'" + req.params.year +"' ", function(err, row) {
 		res.json(addToArray(row));
 	});
 });
 
-
+//returns both tables to compare population to marriages in country for all age and years
+//returns 6 elements 3 sex's in both for specfic year and age
+app.get('/population/marriage/age/year/:age/:year', function(req, res) {
+	db.all("SELECT popdata.age,popdata.sex, popdata."+getYear(req.params.year)+", mardata.age, mardata.sex, mardata." +getYear(req.params.year)+" FROM popData INNER JOIN mardata WHERE popData.age = '" + req.params.age + "' AND marData.age = '"+ req.params.age +"' AND '"+ req.params.year +"'", function(err, row) {
+			res.json(addToArray(row));
+	});
+});
 
 //******************* FINSIH COMPARE BOTH SETS REQUESTS ***********************//
 //add all return values to array
