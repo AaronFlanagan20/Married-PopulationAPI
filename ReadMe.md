@@ -28,8 +28,8 @@ Two .csv files have been added to the repository so the data can be manipulated,
 
 ## How to Query the API
 
-### There is two methods to use this API.
-**Method 1**: Download and access source code.
+### The steps to download this api.
+**Step 1**: Download and access source code.
 * First you can download the zip file or fork this repository to your own github and clone it to your machine.
 * Next open your terminal/command prompt and change directory to where the repository is stored on your local machine.
 * You can now run the command *_node Server.js_* and run the server on our local machine.
@@ -43,7 +43,7 @@ Two .csv files have been added to the repository so the data can be manipulated,
   will return the number of males there was in Ireland in 2011.
 
 
-**Method 2**: Post requests online
+**Step 2**: Run API and compare data
 
 *The following URL's will post a request to the API to return data.*
 
@@ -66,7 +66,7 @@ You can compare both the datasets:
    "year_2014": 24437
   }
 ```
-
+**Marriage 2011 - 2014.json**
 ```json
  {
     "sex":"female",
