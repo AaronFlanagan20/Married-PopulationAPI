@@ -1,11 +1,13 @@
 //******************************SETUPS*******************************//
 // Import the fs module so that we can read in files.
 var fs = require('fs');
+
 // Import express to create and configure the HTTP server.
 var express = require('express');
 
 //create http
 var app = express();
+
 //sets format for json
 app.set('json spaces', 1);
 
@@ -32,7 +34,7 @@ app.get('/marriage/sex/age', function(req, res) {
 });
 //**************************FINISH HELP STRINGS***************************//
 //**************************DATABASE FUNCTIONS****************************//
-
+//run in a series of queries
 db.serialize(function() {
 
 //Read in population file and parse it for json
@@ -70,7 +72,6 @@ var marData = JSON.parse(fs.readFileSync('Marriages 2011 - 2014.json','utf8'));
 	}		
 	stmt.finalize();
 	console.log("marData made");
-
 
 });
 //************************FINSHDATABASE FUNCTIONS****************************//	
@@ -164,7 +165,7 @@ app.get('/population/marriage/year/:year', function(req, res) {
 //returns both tables to compare population to marriages in country for all age and years
 //returns 6 elements 3 sex's in both for specfic year and age
 app.get('/population/marriage/age/year/:age/:year', function(req, res) {
-	db.all("SELECT popdata.age,popdata.sex, popdata."+getYear(req.params.year)+", mardata.age, mardata.sex, mardata." +getYear(req.params.year)+" FROM popData INNER JOIN mardata WHERE popData.age = '" + req.params.age + "' AND marData.age = '"+ req.params.age +"' AND '"+ req.params.year +"'", function(err, row) {
+	db.all("SELECT popdata.age,popdata.sex, popdata."+getYear(req.params.year)+", mardata.age, mardata.sex, mardata." +getYear(req.params.year)+" FROM marData INNER JOIN popdata WHERE popData.age = '" + req.params.age + "' AND marData.age = '"+ req.params.age +"' AND '"+ req.params.year +"'", function(err, row) {
 			res.json(addToArray(row));
 	});
 });
@@ -192,7 +193,6 @@ function getYear(year){
 
 	return x;
 }
-
 
 // Run the server
 var server = app.listen(8000);
