@@ -48,12 +48,35 @@ Two .csv files have been added to the repository so the data can be manipulated,
 *The following URL's will post a request to the API to return data.*
 
 
-You can query the api at:
-* http://married-populationAPI/male/2012/
-* http://married-populationAPI/female/2012/
-* http://married-populationAPI/male/20/2011/
-* http://married-populationAPI/female/20/2013/
+You can compare both the datasets:
+* 127.0.0.1:8000/population/marriage/sex/age/[sex]/[age]
+* 127.0.0.1:8000/population/marriage/year/[year]
+* 127.0.0.1:8000/population/marriage/age/year/[age]/[year]
 
+*Sample Reponse*
+
+**Population 2011 - 2014.json**
+```json
+ {
+   "age": "21",
+   "sex": "female",
+   "year_2011": 28878,
+   "year_2012": 28065,
+   "year_2013": 25975,
+   "year_2014": 24437
+  }
+```
+
+```json
+ {
+    "sex":"female",
+    "age":21,
+    "year_2011":3.5,
+    "year_2012":4.8,
+    "year_2013":4.6,
+    "year_2014":5.6
+  }
+```
 
 
 ## Query URLS
